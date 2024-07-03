@@ -10,6 +10,7 @@ Classes:
         - keep track of turns
         - provide random order to board
         - provide player choices to board
+    - player
     - human_player
         - pick_colors
     - computer_player
