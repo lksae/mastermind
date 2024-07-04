@@ -30,7 +30,8 @@ class Game
 
   def play_round
     @turns += 1
-    process_user_input
+    process_user_input if @computer_mode
+    process_computer_input unless @computer_mode
   end
 
   def receive_random_order_from_computer
@@ -77,7 +78,21 @@ class Game
   end
 
   def process_computer_as_guesser
+    @computer_guesses = %w[incorrect incorrect incorrect incorrect]
     provide_order_to_board(receive_user_code)
-    p @board.random_order
+    play_round while @turns < 12 && !@game_won
+    return unless @turns == 12
+
+    display_computer_loser_message
+  end
+
+  def display_computer_loser_message
+    puts 'Congratulations! You are smarter than a computer!'
+  end
+
+  def process_computer_input
+    computer_choice = @computer_player.select_colors_randomly(@computer_guesses, @colors)
+    @computer_guesses = @board.check_computer_input(computer_choice)
+    p @computer_guesses
   end
 end

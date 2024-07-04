@@ -41,4 +41,16 @@ class Board
     end
     white_pegs
   end
+
+  def check_computer_input(computer_choice)
+    processed_computer_choices = []
+    computer_choice.each_with_index do |color, index|
+      if color == random_order[index]
+        processed_computer_choices.push(color)
+      else
+        processed_computer_choices.push('incorrect')
+      end
+    end
+    processed_computer_choices
+  end
 end
