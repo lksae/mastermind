@@ -94,5 +94,12 @@ class Game
     computer_choice = @computer_player.select_colors_randomly(@computer_guesses, @colors)
     @computer_guesses = @board.check_computer_input(computer_choice)
     p @computer_guesses
+
+    @game_won = true if @computer_guesses == @board.random_order
+    return unless @computer_guesses == @board.random_order
+
+    puts "Sadly, the computer is more intelligent than you.
+    He needed only #{@turns} turns to crack your code.
+    You moron!"
   end
 end
