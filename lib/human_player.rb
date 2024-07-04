@@ -11,4 +11,9 @@ class HumanPlayer < Player
   def receive_user_choice
     gets.chomp
   end
+
+  def receive_user_code
+    puts 'Please provide your code: '
+    gets.chomp.split(' ')
+  end
 end
